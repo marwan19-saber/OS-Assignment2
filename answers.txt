@@ -1,18 +1,23 @@
-1. process_creation.c 
-fork() creates  a new child process returns 0 to the child , positive number to parent ,and -1 if there is an error  
+1. process_creation.c
 
-2. file1.c file2.c 
-file2.c declares hello because the code is already in file1.c   
+`fork()` creates a new child process. It returns 0 to the child, a positive number to the parent, and -1 if an error happens. After `fork()`, both processes continue from the next line, and each one has its own PID. The OS decides which process runs first, so the printing order can change.
 
-3. simple_program.c 
-simple meassage usint printf() 
+2. file1.c and file2.c
 
-4.linker 
-works during compilation and connects diffrenet objects files  
+`file2.c` declares `hello()` using `void hello();` because the actual function code is written in `file1.c`. This declaration tells the compiler that the function exists. The linker connects the function call with its real code. When I changed `file1.c` and rebuilt the program, the updated message appeared when I ran it.
 
-5. Loader  
-works when we run the program 
+3. simple_program.c
 
-6.Makefile 
-"all" builds all programs and "clean" deletes generated files 
-"Up to date " means no change
+The program prints a simple message using `printf()`. The `printf()` function comes from the shared C library called `libc.so.6`. I used `ldd simple_program` to see the libraries needed by the program. The output showed `linux-vdso.so.1`, `libc.so.6`, and `ld-linux-x86-64.so.2`, which is the loader itself. The hexadecimal numbers represent memory addresses.
+
+4. Linker
+
+The linker works during build time. It combines the compiled object files and connects each function call to its actual code. If a function is missing, it gives an error such as "undefined reference".
+
+5. Loader
+
+The loader works when we run the program using `./program`. It loads the program and its required shared libraries into memory, connects the program with those libraries, and starts its execution. The `ldd` command showed the shared libraries needed by the program.
+
+6. Makefile
+
+`all` runs the three GCC commands to compile all programs every time we use `make`. `clean` deletes the generated executable files. When I saw "up to date", it was from Make's built-in rules, not from a separate target in my Makefile.
