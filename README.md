@@ -11,13 +11,16 @@ sudo apt install gcc
 ## Usage 
 compile and run the programs: 
 gcc process_creation.c -o process_creation 
-./process_creation
+ 
+ ./process_creation
 
 gcc file1.c  file2.c -o output_program 
-./output_program 
+ 
+ ./output_program 
 
 gcc simple_program.c -o simple_program 
-./simple_program 
+ 
+ ./simple_program 
 ldd simple_program
  
 ## Project Structure 
