@@ -1,0 +1,18 @@
+1. process_creation.c 
+fork() creates  a new child process returns 0 to the child , positive number to parent ,and -1 if there is an error  
+
+2. file1.c file2.c 
+file2.c declares hello because the code is already in file1.c   
+
+3. simple_program.c 
+simple meassage usint printf() 
+
+4.linker 
+works during compilation and connects diffrenet objects files  
+
+5. Loader  
+works when we run the program 
+
+6.Makefile 
+"all" builds all programs and "clean" deletes generated files 
+"Up to date " means no change
